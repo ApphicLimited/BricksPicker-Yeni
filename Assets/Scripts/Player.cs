@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         CurrentBaseColour = BaseColour;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (GameManager.instance.GameState != GameStates.GameOnGoing)
             return;
@@ -47,9 +47,11 @@ public class Player : MonoBehaviour
             return;
         }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * ForwardSpeed);
+        //transform.position = Vector3.Lerp(transform.position, GameManager.instance.PlayerManager.EndTransform.position, Time.deltaTime * 0.1f);
+
+        transform.Translate(Vector3.forward * Time.deltaTime * ForwardSpeed, Space.World);
         nextPosition.z = transform.position.z;
-        StackCollector.transform.position = new Vector3(transform.position.x, StackCollector.transform.position.y, transform.position.z + 1.9f);
+        //StackCollector.transform.position = new Vector3(transform.position.x, StackCollector.transform.position.y, transform.position.z + 1.9f);
 
         if (GameManager.instance.SmothFollow.CameraMovement.IsApproachedToEndPoint)
             return;

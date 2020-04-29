@@ -42,7 +42,7 @@ public class SuperPowerController : MonoBehaviour
         }
 
         if (GameManager.instance.SmothFollow.CameraMovement.IsApproachedToEndPoint)
-            KickPowerBar.gameObject.SetActive(true);Debug.Log("1111");
+            KickPowerBar.gameObject.SetActive(true);
 
     }
 

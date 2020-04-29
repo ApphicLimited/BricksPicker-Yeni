@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * ForwardSpeed, Space.World);
         nextPosition.z = transform.position.z;
-        //StackCollector.transform.position = new Vector3(transform.position.x, StackCollector.transform.position.y, transform.position.z + 1.9f);
+        StackCollector.transform.position = new Vector3(transform.position.x, StackCollector.transform.position.y, transform.position.z + 1.9f);
 
         if (GameManager.instance.SmothFollow.CameraMovement.IsApproachedToEndPoint)
             return;

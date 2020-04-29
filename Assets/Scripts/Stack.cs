@@ -94,8 +94,8 @@ public class Stack : MonoBehaviour
         Destroy(this);
     }
 
-    public void MoveOverCollecter(Vector3 newPos)
+    public void MoveOverCollecter(Transform transfrom,float yPos)
     {
-        transform.position = newPos;
+        transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
     }
 }

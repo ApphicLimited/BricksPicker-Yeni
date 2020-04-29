@@ -18,13 +18,8 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsSlowMotionStart)
-        {
-            Time.timeScale += (1f / SlowDownTimeAmaount) * Time.unscaledDeltaTime;
-            Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
-
-            scale = Time.timeScale;
-        }
+        Time.timeScale += (1f / SlowDownTimeAmaount) * Time.unscaledDeltaTime;
+        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
     }
 
     public void DoSlowMotion()
@@ -38,5 +33,6 @@ public class TimeController : MonoBehaviour
     {
         IsSlowMotionStart = false;
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 }

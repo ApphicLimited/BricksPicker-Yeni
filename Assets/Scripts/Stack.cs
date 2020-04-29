@@ -90,24 +90,13 @@ public class Stack : MonoBehaviour
         Destroy(this);
     }
 
-    public void MoveOverCollecter(Transform transfrom,float yPos)
+    public void MoveOverCollecter(Transform transfrom, float yPos)
     {
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
     }
 
-    #region Events
-
-    private void OnCollisionEnter(Collision collision)
+    public void MoveOneStackUp()
     {
-        //if (collision.collider.tag == "StackCollecter")
-        //{
-        //    if (CurrentColour.ToString() == GameManager.instance.PlayerManager.CurrentColour.ToString())
-        //    {
-        //        collision.collider.GetComponent<StackCollector>().CollectedStacks.Add(gameObject.GetComponent<Stack>());
-        //        collision.collider.GetComponent<StackCollector>().CollectStack(this);
-        //    }
-        //}
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.38f / 2f, transform.position.z);
     }
-
-    #endregion
 }

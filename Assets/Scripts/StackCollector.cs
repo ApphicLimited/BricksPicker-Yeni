@@ -59,41 +59,6 @@ public class StackCollector : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void CollectStack(Stack stack)
-    {
-        if (CollectedStacks.Count == 1)
-        {
-            stack.MoveOverCollecter(transform, 0.15f);
-            stack.EnableElastic(true, transform);
-            stack.Elastic.AnimationSpeed = GameManager.instance.StackManager.MaxStackWaveStrength;
-        }
-        else
-        {
-            stack.MoveOverCollecter(transform, 0.15f);
-            stack.EnableElastic(true, transform);
-            stack.Elastic.AnimationSpeed = GameManager.instance.StackManager.MaxStackWaveStrength;
-
-            for (int i = 0; i < CollectedStacks.Count - 1; i++)
-            {
-                CollectedStacks[i].MoveOverCollecter(transform, CollectedStacks[i].transform.position.y + perStackHeightDistance / 2f);
-                CollectedStacks[i].EnableElastic(true, transform);
-                CollectedStacks[i].Elastic.AnimationSpeed -= GameManager.instance.StackManager.PerStackWaveReductionAmount;
-                //BalanceMassScale(CollectedStacks[i].Rigidbody.mass);
-
-                if (CollectedStacks[i].Elastic.AnimationSpeed < GameManager.instance.StackManager.MinStackWaveStrength)
-                    CollectedStacks[i].Elastic.AnimationSpeed = GameManager.instance.StackManager.MinStackWaveStrength;
-            }
-        }
-
-        PlaySound();
-
-        StartCoroutine(stack.CubeCreate());
-
-        GameManager.instance.SuperPowerController.AddPower(CollectedStacks.Last().Point);
-        GameManager.instance.ScoreController.CurrentCollectedStackNumber++;
-        GameManager.instance.StackManager.Stacks.Remove(stack);
-    }
-
     private void UseMaxScale()
     {
         IsPowerUpUsed = true;
@@ -126,16 +91,6 @@ public class StackCollector : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.tag == Constants.TAG_STACK)
-    //    {
-    //        GameManager.instance.SuperPowerController.SubPower(collision.collider.GetComponent<Stack>().Point);
-    //        GameManager.instance.StackManager.Stacks.Remove(collision.collider.GetComponent<Stack>());
-    //        Destroy(collision.collider.gameObject);
-    //    }
-    //}
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == Constants.TAG_STACK)
@@ -158,7 +113,7 @@ public class StackCollector : MonoBehaviour
 
                     for (int i = 0; i < CollectedStacks.Count - 1; i++)
                     {
-                        CollectedStacks[i].MoveOverCollecter(transform, CollectedStacks[i].transform.position.y + perStackHeightDistance / 2f);
+                        CollectedStacks[i].MoveOneStackUp();
                         CollectedStacks[i].EnableElastic(true, transform);
                         CollectedStacks[i].Elastic.AnimationSpeed -= GameManager.instance.StackManager.PerStackWaveReductionAmount;
 

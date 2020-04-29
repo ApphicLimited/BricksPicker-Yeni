@@ -56,13 +56,10 @@ public class Stack : MonoBehaviour
             GetComponent<BoxCollider>().enabled = true;
 
             if (animation.isPlaying)
-            {
                 animation.Stop();
-            }
             if (transform.name == "Stack")
-            {
                 animation.Play("BrickScale");
-            }
+
             //else
             //{
             //    animation.Play("BrickScale2");
@@ -79,7 +76,6 @@ public class Stack : MonoBehaviour
 
         Elastic.enabled = isEnable;
     }
-
 
     public IEnumerator CubeCreate()
     {
@@ -98,4 +94,20 @@ public class Stack : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
     }
+
+    #region Events
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.collider.tag == "StackCollecter")
+        //{
+        //    if (CurrentColour.ToString() == GameManager.instance.PlayerManager.CurrentColour.ToString())
+        //    {
+        //        collision.collider.GetComponent<StackCollector>().CollectedStacks.Add(gameObject.GetComponent<Stack>());
+        //        collision.collider.GetComponent<StackCollector>().CollectStack(this);
+        //    }
+        //}
+    }
+
+    #endregion
 }

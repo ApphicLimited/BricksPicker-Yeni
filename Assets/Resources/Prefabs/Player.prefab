@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce6962f43f5744458f95c313e724120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForwardSpeed: 15
+  ForwardSpeed: 3
   Speed: 20
   BaseColour: 1
   SkinnedMeshRenderer: {fileID: 1793497360883959393}
@@ -4583,6 +4583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586696011016601785, guid: f02e9bd30329933458c3c15f9e6b1f03,
+        type: 3}
+      propertyPath: m_TagString
+      value: StackCollecter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f02e9bd30329933458c3c15f9e6b1f03, type: 3}

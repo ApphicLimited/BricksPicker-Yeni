@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         CurrentBaseColour = BaseColour;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
         if (GameManager.instance.GameState != GameStates.GameOnGoing)
             return;

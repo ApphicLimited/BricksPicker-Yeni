@@ -126,5 +126,5 @@ MonoBehaviour:
   SetNativePosition: 0
   MoveAllAxis: 0
   XAxis: 0
-  YAxis: 0
+  YAxis: 1
   ZAxis: 0

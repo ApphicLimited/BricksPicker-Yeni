@@ -63,10 +63,10 @@ public class Stack : MonoBehaviour
             {
                 animation.Play("BrickScale");
             }
-            else
-            {
-                animation.Play("BrickScale2");
-            }
+            //else
+            //{
+            //    animation.Play("BrickScale2");
+            //}
         }
         else
         {

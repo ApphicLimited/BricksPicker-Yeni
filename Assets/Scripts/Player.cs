@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
     public void AtEndOfKickingAnim()
     {
         Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
+        Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
         GameManager.instance.SmothFollow.GoForward();
         StackCollector.ResetJointSettings();
         GameManager.instance.TimeController.StopSlowMotion();

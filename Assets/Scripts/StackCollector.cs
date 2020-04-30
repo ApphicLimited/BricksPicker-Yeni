@@ -48,11 +48,17 @@ public class StackCollector : MonoBehaviour
     {
         Destroy(GameManager.instance.PlayerManager.Player.GetComponent<FixedJoint>());
 
-        foreach (var item in CollectedStacks)
+        //foreach (var item in CollectedStacks)
+        //{
+        //    item.Rigidbody.isKinematic = false;
+        //    item.EnableElastic(false);
+        //    item.ThrowAway();
+        //}
+        for (int i = CollectedStacks.Count - 1; i >= 0; i--)
         {
-            item.Rigidbody.isKinematic = false;
-            item.EnableElastic(false);
-            item.ThrowAway();
+            CollectedStacks[i].Rigidbody.isKinematic = false;
+            CollectedStacks[i].EnableElastic(false);
+            CollectedStacks[i].ThrowAway();
         }
         GameManager.instance.GameState = GameStates.GameFinished;
 
@@ -63,12 +69,14 @@ public class StackCollector : MonoBehaviour
     {
         IsPowerUpUsed = true;
         Head.transform.localScale = new Vector3(CollecterMaxScale, transform.localScale.y, transform.localScale.z);
+        GetComponent<BoxCollider>().size = new Vector3(GetComponent<BoxCollider>().size.x * 3, GetComponent<BoxCollider>().size.y, GetComponent<BoxCollider>().size.z);
     }
 
     private void UseMinScale()
     {
         IsPowerUpUsed = false;
         Head.transform.localScale = new Vector3(CollecterMinScale, transform.localScale.y, transform.localScale.z);
+        GetComponent<BoxCollider>().size = new Vector3(GetComponent<BoxCollider>().size.x / 3, GetComponent<BoxCollider>().size.y, GetComponent<BoxCollider>().size.z);
     }
 
     //private void BalanceMassScale(float mass)
@@ -154,7 +162,7 @@ public class StackCollector : MonoBehaviour
 
     private void OnGameStarted()
     {
-      
+
     }
 
     private void OnDestroy()

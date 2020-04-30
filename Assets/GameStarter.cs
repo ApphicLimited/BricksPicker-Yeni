@@ -28,6 +28,7 @@ public class GameStarter : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelId", currentLevel);
         }
+        currentLevel = 2;
         if(currentLevel > 2)
         {
             Instantiate(Resources.Load("Level" + Random.Range(0,2)), new Vector3(0, 0, 0), Quaternion.identity);

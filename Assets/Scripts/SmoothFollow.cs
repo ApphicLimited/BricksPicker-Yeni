@@ -36,7 +36,7 @@ public class SmoothFollow : MonoBehaviour
             float wantedRotationAngle = target.eulerAngles.y;
             float wantedHeight = target.position.y + height;
 
-            transform.position = new Vector3(transform.position.x, height, transform.position.z + 20 * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, height, transform.position.z + 30 * Time.deltaTime);
             transform.LookAt(target);
         }
         else

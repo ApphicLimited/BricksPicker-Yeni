@@ -84,9 +84,9 @@ public class Stack : MonoBehaviour
         cube.SetActive(false);
     }
 
-    public void ThrowAway()
+    public void ThrowAway(float id)
     {
-        Rigidbody.AddForce(Vector3.forward * GameManager.instance.StackManager.StackThrowingForce, ForceMode.Impulse);
+        Rigidbody.AddForce(Vector3.forward * GameManager.instance.StackManager.StackThrowingForce * id, ForceMode.Impulse);
         Destroy(this);
     }
 

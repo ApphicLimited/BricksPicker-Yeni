@@ -58,7 +58,7 @@ public class StackCollector : MonoBehaviour
         {
             CollectedStacks[i].Rigidbody.isKinematic = false;
             CollectedStacks[i].EnableElastic(false);
-            CollectedStacks[i].ThrowAway();
+            CollectedStacks[i].ThrowAway((CollectedStacks.Count - i) * Time.deltaTime);
         }
         GameManager.instance.GameState = GameStates.GameFinished;
 

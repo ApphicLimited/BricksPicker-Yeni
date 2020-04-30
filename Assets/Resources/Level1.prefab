@@ -16173,6 +16173,7 @@ MonoBehaviour:
   ColourChnagerParticleEffect: {fileID: 8204028644077708347}
   Animator: {fileID: 5724286729077047052}
   Rigidbody: {fileID: 7292288227053939985}
+  HitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!1 &2733553271816821447
 GameObject:
   m_ObjectHideFlags: 0

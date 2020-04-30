@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlowDownFactor: 0.05
-  SlowDownTimeAmaount: 1.5
+  SlowDownTimeAmaount: 2
   scale: 0
 --- !u!1 &322358145899375579
 GameObject:
@@ -41624,6 +41624,7 @@ MonoBehaviour:
   ColourChnagerParticleEffect: {fileID: 1142394425334753641}
   Animator: {fileID: 3562568629428548190}
   Rigidbody: {fileID: 1960016610643632195}
+  HitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!1 &6624655478966769557
 GameObject:
   m_ObjectHideFlags: 0

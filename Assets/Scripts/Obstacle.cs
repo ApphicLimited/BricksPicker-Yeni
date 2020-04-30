@@ -19,10 +19,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("11");
         if(collision.gameObject.CompareTag("StackCollecter"))
         {
-            Debug.Log(collision.gameObject.name);
             GameManager.instance.GameState = GameStates.GameOver;
             FindObjectOfType<StackCollector>().ResetJointSettings();
             FindObjectOfType<Player>().Animator.enabled = false;

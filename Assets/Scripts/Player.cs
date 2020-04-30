@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private Material materialClone;
     private Vector3 nextPosition;
     private bool IsArrived;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,9 +123,10 @@ public class Player : MonoBehaviour
     }
 
     #region Animation Event
-
+    public GameObject HitEffect;
     public void AtEndOfKickingAnim()
     {
+        Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
         GameManager.instance.SmothFollow.GoForward();
         StackCollector.ResetJointSettings();
         GameManager.instance.TimeController.StopSlowMotion();

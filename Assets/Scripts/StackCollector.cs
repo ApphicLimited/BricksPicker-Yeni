@@ -115,13 +115,28 @@ public class StackCollector : MonoBehaviour
                 }
                 else
                 {
-                    CollectedStacks.Last().MoveOverCollecter(transform, 0.15f);
+                    if (CollectedStacks.Last().IsBigStack)
+                    {
+                        CollectedStacks.Last().MoveOverCollecter(transform, 0.2f);
+                    }
+                    else
+                    {
+                        CollectedStacks.Last().MoveOverCollecter(transform, 0.15f);
+                    }
+                    
                     CollectedStacks.Last().EnableElastic(true, transform);
                     CollectedStacks.Last().Elastic.AnimationSpeed = GameManager.instance.StackManager.MaxStackWaveStrength;
 
                     for (int i = 0; i < CollectedStacks.Count - 1; i++)
                     {
-                        CollectedStacks[i].MoveOneStackUp();
+                        if (CollectedStacks.Last().IsBigStack)
+                        {
+                            CollectedStacks[i].MoveOneStackUp(0.25f);
+                        }
+                        else
+                        {
+                            CollectedStacks[i].MoveOneStackUp(.19f);
+                        }
                         CollectedStacks[i].EnableElastic(true, transform);
                         CollectedStacks[i].Elastic.AnimationSpeed -= GameManager.instance.StackManager.PerStackWaveReductionAmount;
 
@@ -131,8 +146,8 @@ public class StackCollector : MonoBehaviour
                 }
 
                 PlaySound();
-
-                if (collision.transform.name == "Stack")
+                
+                if (collision.transform.name.Contains("Stack"))
                 {
                     StartCoroutine(collision.transform.GetComponent<Stack>().CubeCreate());
                 }

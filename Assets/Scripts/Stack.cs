@@ -95,8 +95,8 @@ public class Stack : MonoBehaviour
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
     }
 
-    public void MoveOneStackUp()
+    public void MoveOneStackUp(float height)
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.38f / 2f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
     }
 }

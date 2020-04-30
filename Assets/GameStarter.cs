@@ -28,6 +28,7 @@ public class GameStarter : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelId", currentLevel);
         }
+        currentLevel = 0;
         if(currentLevel > 2)
         {
             Instantiate(Resources.Load("Level" + Random.Range(0,2)), new Vector3(0, 0, 0), Quaternion.identity);
@@ -57,6 +58,12 @@ public class GameStarter : MonoBehaviour
 
     public void Fail()
     {
-        GameManager.instance.RestartButton.SetActive(true);
+        StartCoroutine(WaitAndActivate(GameManager.instance.RestartButton, 2f));
+    }
+    
+    IEnumerator WaitAndActivate(GameObject go, float time)
+    {
+        yield return new WaitForSeconds(time);
+        go.SetActive(true);
     }
 }

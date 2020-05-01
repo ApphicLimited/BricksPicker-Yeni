@@ -131,7 +131,7 @@ public class StackCollector : MonoBehaviour
                     {
                         if (CollectedStacks.Last().IsBigStack)
                         {
-                            CollectedStacks[i].MoveOneStackUp(.19f);
+                            CollectedStacks[i].MoveOneStackUp(.25f);
                         }
                         else
                         {

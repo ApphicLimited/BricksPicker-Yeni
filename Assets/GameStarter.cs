@@ -20,6 +20,9 @@ public class GameStarter : MonoBehaviour
         else if (this != instance)
             Destroy(this);
 
+
+        currentLevel = 0;
+
         if (PlayerPrefs.HasKey("LevelId"))
         {
             currentLevel = PlayerPrefs.GetInt("LevelId");
@@ -28,7 +31,6 @@ public class GameStarter : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelId", currentLevel);
         }
-        currentLevel = 0;
         if(currentLevel > 2)
         {
             Instantiate(Resources.Load("Level" + Random.Range(0,2)), new Vector3(0, 0, 0), Quaternion.identity);

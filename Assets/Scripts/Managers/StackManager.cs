@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class StackManager : MonoBehaviour
 {
     public List<Stack> Stacks = new List<Stack>();
+    public List<ColourChanger> ColourChangers = new List<ColourChanger>();
     public Material MaterialSource;
     public TMP_Text TextStackCount;
 
@@ -26,8 +28,30 @@ public class StackManager : MonoBehaviour
 
     public void ChangeColour()
     {
+        float fromZpos = GameManager.instance.PlayerManager.Player.transform.position.z;
+        float tillZpos = 0;
+        float minDistanceZpos = 100000;
+
+        ColourChangers.Where(e => e.IsPassedBy == false).ToList().ForEach((ColourChanger changer) =>
+         {
+             if (Mathf.Abs(changer.transform.position.z-fromZpos)< minDistanceZpos)
+             {
+                 minDistanceZpos = Mathf.Abs(changer.transform.position.z - fromZpos);
+                 tillZpos = changer.transform.position.z;
+             }
+         });
+
         foreach (var item in Stacks)
-            item.ChangeColour(GameManager.instance.PlayerManager.CurrentColour);
+        {
+            if (item.IsOnCollecter==false && item.transform.position.z<tillZpos && item.transform.position.z>fromZpos)
+            {
+                item.ChangeColour(GameManager.instance.PlayerManager.CurrentColour);
+            }
+            else if (item.IsOnCollecter==true)
+            {
+                item.ChangeColour(GameManager.instance.PlayerManager.CurrentColour);
+            }
+        }
     }
 
     public void ResetColour()

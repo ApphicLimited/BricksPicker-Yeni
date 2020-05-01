@@ -1378,8 +1378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3966ce7422e74b34b827b711b07e4b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlowDownFactor: 0.03
-  SlowDownTimeAmaount: 0.3
   scale: 0
 --- !u!1 &322358145899375579
 GameObject:
@@ -7729,6 +7727,7 @@ MonoBehaviour:
   MyBase: {fileID: 4570254018487033068}
   Aura: {fileID: 8511151748919494894}
   Particles: {fileID: 3071602543694580111}
+  IsPassedBy: 0
 --- !u!1 &650816688968370694
 GameObject:
   m_ObjectHideFlags: 0
@@ -23080,6 +23079,10 @@ MonoBehaviour:
   - {fileID: 1439681745753519405}
   - {fileID: 1439681745792005097}
   - {fileID: 1439681746223346518}
+  ColourChangers:
+  - {fileID: 1834666082814226921}
+  - {fileID: 8721156683738453836}
+  - {fileID: 389669467855936239}
   MaterialSource: {fileID: 2100000, guid: d13c81e0642bd3f48bbf085175dfc6e9, type: 2}
   TextStackCount: {fileID: 145635240108350545}
   Stack: {fileID: 7814002209245637624, guid: d73409cee315128419c9382151d401a7, type: 3}
@@ -27342,6 +27345,7 @@ MonoBehaviour:
   MyBase: {fileID: 5306641626168361974}
   Aura: {fileID: 7369228030654023997}
   Particles: {fileID: 1712257025669626704}
+  IsPassedBy: 0
 --- !u!1 &4143294790888250063
 GameObject:
   m_ObjectHideFlags: 0
@@ -49339,6 +49343,7 @@ MonoBehaviour:
   MyBase: {fileID: 5015266230242273427}
   Aura: {fileID: 7617739924380127722}
   Particles: {fileID: 3329141272988377662}
+  IsPassedBy: 0
 --- !u!1 &8363885704645415847
 GameObject:
   m_ObjectHideFlags: 0

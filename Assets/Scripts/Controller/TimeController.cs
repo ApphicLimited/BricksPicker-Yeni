@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-    public float SlowDownFactor;
-    public float SlowDownTimeAmaount;
+    public float SlowDownFactor { get; set; }
+    public float SlowDownTimeAmaount { get; set; }
     public float scale;
 
     private bool IsSlowMotionStart;

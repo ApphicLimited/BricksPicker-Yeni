@@ -8,11 +8,14 @@ public class ColourChanger : MonoBehaviour
     public MeshRenderer MyBase, Aura;
     public ParticleSystem Particles;
 
+    public bool IsPassedBy;
+
     private void Start()
     {
         MyBase.material.color = GameManager.instance.ColourController.BaseColours[(int)MainColour].Colour;
         Aura.material.color = GameManager.instance.ColourController.BaseColours[(int)MainColour].Colour;
         Particles.startColor = GameManager.instance.ColourController.BaseColours[(int)MainColour].Colour;
+        IsPassedBy = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +24,7 @@ public class ColourChanger : MonoBehaviour
         {
             GameManager.instance.AudioManager.PlayClip("CollectGoThroughColorFlow");
             GameManager.instance.PlayerManager.ChangePlayerColour(MainColour, true);
+            IsPassedBy = true;
         }
     }
 }

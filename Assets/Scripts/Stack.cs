@@ -13,9 +13,10 @@ public class Stack : MonoBehaviour
     public Animation animation;
     public GameObject cube;
     public BaseColour CurrentColour;
+    public bool IsOnCollecter;
 
     private Material materialClone;
-    public float constantHeight;
+    private float constantHeight;
 
     private void Start()
     {
@@ -101,12 +102,15 @@ public class Stack : MonoBehaviour
 
     public void MoveOverCollecter(Transform transfrom, float yPos)
     {
+        IsOnCollecter = true;
         constantHeight = yPos;
         transform.position = new Vector3(transform.position.x, constantHeight, transform.position.z);
     }
 
     public void MoveOneStackUp(float height)
     {
+        IsOnCollecter = true;
+
         constantHeight = transform.position.y + height;
         transform.position = new Vector3(transform.position.x, constantHeight, transform.position.z);
     }

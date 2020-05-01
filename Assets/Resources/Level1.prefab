@@ -19188,7 +19188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909a3702fba3add498d58d4cca840a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextLevel: {fileID: 0}
+  TextLevel: {fileID: 9079266989115611802}
   ImageLevelBar: {fileID: 8065665406466636833}
 --- !u!1 &3448039934925669824
 GameObject:
@@ -55213,8 +55213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3966ce7422e74b34b827b711b07e4b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlowDownFactor: 0.05
-  SlowDownTimeAmaount: 1.5
+  SlowDownFactor: 0.02
+  SlowDownTimeAmaount: 0.3
   scale: 0
 --- !u!1 &8825144584773199497
 GameObject:

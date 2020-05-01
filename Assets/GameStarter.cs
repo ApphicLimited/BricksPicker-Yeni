@@ -33,7 +33,7 @@ public class GameStarter : MonoBehaviour
         }
         if(currentLevel > 2)
         {
-            Instantiate(Resources.Load("Level" + Random.Range(0,2)), new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(Resources.Load("Level" + currentLevel), new Vector3(0, 0, 0), Quaternion.identity);
         }
         else
         {
@@ -49,7 +49,10 @@ public class GameStarter : MonoBehaviour
 
     public void LevelPassed()
     {
-        currentLevel++;
+        if (++currentLevel > 2)
+        {
+            currentLevel = Random.Range(0, 2);
+        }
         PlayerPrefs.SetInt("LevelId", currentLevel);
     }
 

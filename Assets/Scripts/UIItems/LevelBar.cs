@@ -14,6 +14,8 @@ public class LevelBar : MonoBehaviour
     void Start()
     {
         dff = Mathf.Abs(GameManager.instance.PlayerManager.StartTransform.position.z - GameManager.instance.PlayerManager.EndTransform.position.z);
+
+        TextLevel.text = (GameStarter.instance.currentLevel + 1).ToString();
     }
 
     // Update is called once per frame

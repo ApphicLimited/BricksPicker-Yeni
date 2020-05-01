@@ -127,11 +127,11 @@ public class StackCollector : MonoBehaviour
                     CollectedStacks.Last().EnableElastic(true, transform);
                     CollectedStacks.Last().Elastic.AnimationSpeed = GameManager.instance.StackManager.MaxStackWaveStrength;
 
-                    for (int i = 0; i < CollectedStacks.Count - 1; i++)
+                    for (int i = 0; i < CollectedStacks.Count; i++)
                     {
                         if (CollectedStacks.Last().IsBigStack)
                         {
-                            CollectedStacks[i].MoveOneStackUp(0.25f);
+                            CollectedStacks[i].MoveOneStackUp(.19f);
                         }
                         else
                         {

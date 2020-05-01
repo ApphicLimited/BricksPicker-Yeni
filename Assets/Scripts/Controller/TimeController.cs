@@ -9,17 +9,33 @@ public class TimeController : MonoBehaviour
     public float scale;
 
     private bool IsSlowMotionStart;
+    private float timer;
 
     private void Start()
     {
         IsSlowMotionStart = false;
+        timer = 0;
+
+        SlowDownFactor = 0.04f;
+        SlowDownTimeAmaount = 1f;
     }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         Time.timeScale += (1f / SlowDownTimeAmaount) * Time.unscaledDeltaTime;
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+
+        if (IsSlowMotionStart)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > SlowDownTimeAmaount)
+            {
+                timer = 0;
+                StopSlowMotion();
+            }
+        }
     }
 
     public void DoSlowMotion()

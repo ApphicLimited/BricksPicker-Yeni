@@ -130,7 +130,6 @@ public class Player : MonoBehaviour
         Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
         GameManager.instance.SmothFollow.GoForward();
         StackCollector.ResetJointSettings();
-        GameManager.instance.TimeController.StopSlowMotion();
         GameManager.instance.SuperPowerController.KickPowerBar.gameObject.SetActive(false);
     }
 

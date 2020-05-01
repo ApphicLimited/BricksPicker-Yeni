@@ -15,11 +15,20 @@ public class Stack : MonoBehaviour
     public BaseColour CurrentColour;
 
     private Material materialClone;
+    public float constantHeight;
 
     private void Start()
     {
         SetUpMaterial();
         ChangeColour(MainColour);
+    }
+
+    private void Update()
+    {
+        if (transform.position.y != constantHeight)
+        {
+            transform.position = new Vector3(transform.position.x, constantHeight, transform.position.z);
+        }
     }
 
     private void SetUpMaterial()
@@ -92,11 +101,13 @@ public class Stack : MonoBehaviour
 
     public void MoveOverCollecter(Transform transfrom, float yPos)
     {
-        transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+        constantHeight = yPos;
+        transform.position = new Vector3(transform.position.x, constantHeight, transform.position.z);
     }
 
     public void MoveOneStackUp(float height)
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
+        constantHeight = transform.position.y + height;
+        transform.position = new Vector3(transform.position.x, constantHeight, transform.position.z);
     }
 }

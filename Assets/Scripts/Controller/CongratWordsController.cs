@@ -11,7 +11,7 @@ public class CongratWordsController : MonoBehaviour
 
     public void CongratPlayer(int collectedStackNumber)
     {
-        if (collectedStackNumber % 10 == 0)
+        if (collectedStackNumber % 20 == 0)
         {
             GameObject go = Instantiate(CongratWordPrefab.gameObject, ParentCanvas);
             go.GetComponent<RectTransform>().localPosition = SpawnPosition;

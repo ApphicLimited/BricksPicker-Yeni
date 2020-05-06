@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -78,5 +79,14 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         GameStarter.instance.RestartLevel();
+    }
+
+    public Text ScoreText, CoinText;
+    public GameObject endPanel;
+    public void GameOver()
+    {
+        NextButton.SetActive(true);
+        CoinText.text = CoinController.CollectedCoins.ToString();
+        endPanel.SetActive(true);
     }
 }

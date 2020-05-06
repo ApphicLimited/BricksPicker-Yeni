@@ -23,6 +23,7 @@ public class ScoreController : MonoBehaviour
             currentCollectedStackNumber = value;
             GameManager.instance.CongratWordsController.CongratPlayer(value);
             GameManager.instance.StackManager.TextStackCount.text = value.ToString();
+            GameManager.instance.ScoreText.text = value.ToString();
         }
     }
 

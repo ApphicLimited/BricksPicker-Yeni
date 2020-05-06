@@ -29,7 +29,7 @@ public class SmoothFollow : MonoBehaviour
             CameraMovement.enabled = false;
             if (Mathf.Abs(transform.position.z - target.position.z) < distance)
             {
-                GameManager.instance.NextButton.SetActive(true);
+                StartCoroutine(WaitAndShow());
                 return;
             }
             // Calculate the current rotation angles
@@ -38,6 +38,7 @@ public class SmoothFollow : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, height, transform.position.z + 30 * Time.deltaTime);
             transform.LookAt(target);
+            
         }
         else
         {
@@ -78,5 +79,11 @@ public class SmoothFollow : MonoBehaviour
         isGoingForward = true;
         height = 10;
         distance = 10;
+    }
+
+    IEnumerator WaitAndShow()
+    {
+        yield return new WaitForSeconds(6);
+        GameManager.instance.GameOver();
     }
 }

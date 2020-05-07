@@ -31,6 +31,7 @@ public class GameStarter : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelId", currentLevel);
         }
+        //currentLevel = 4; Levelleri test etmek için bu satırı açın ve level numarasını değiştirin
         if(currentLevel > 2)
         {
             Instantiate(Resources.Load("Level" + currentLevel), new Vector3(0, 0, 0), Quaternion.identity);

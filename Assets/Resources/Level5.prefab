@@ -42537,7 +42537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Audio_SmallBricks: {fileID: 4739585427278631037}
-  Audio_BigBricks: {fileID: 2098569459361186988}
+  Audio_BigBricks: {fileID: 4739585427278631037}
   Audio_ColorFlow: {fileID: 7440878761403059099}
   Audio_Redlight: {fileID: 3291744588384558763}
 --- !u!82 &3291744588384558763

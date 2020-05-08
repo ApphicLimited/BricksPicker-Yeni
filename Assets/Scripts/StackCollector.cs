@@ -19,10 +19,12 @@ public class StackCollector : MonoBehaviour
     private float perStackHeightDistance = 0.38f;
     private bool IsPowerUpUsed;
 
+    GameObject[] tuvaletkagitlari;
+
     private void Start()
     {
         IsPowerUpUsed = false;
-
+        tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TP");
         SuperPowerController.OnSuperPowerActivated += OnSuperPowerActivated;
         GameManager.instance.OnGameStarted += OnGameStarted;
     }
@@ -44,6 +46,19 @@ public class StackCollector : MonoBehaviour
             item.ChangeColour(colour);
     }
 
+    IEnumerator Basla()
+    {
+        yield return new WaitForSeconds(0.4f);
+        if (GameManager.instance.isBonusLevel)
+        {
+            for (int i = 0; i < tuvaletkagitlari.Length; i++)
+            {
+                tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;
+                tuvaletkagitlari[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            }
+        }
+    }
+
     public void ResetJointSettings()
     {
         Destroy(GameManager.instance.PlayerManager.Player.GetComponent<FixedJoint>());
@@ -54,22 +69,15 @@ public class StackCollector : MonoBehaviour
         //    item.EnableElastic(false);
         //    item.ThrowAway();
         //}
-        
+        StartCoroutine(Basla());
+
         for (int i = CollectedStacks.Count - 1; i >= 0; i--)
         {
             CollectedStacks[i].Rigidbody.isKinematic = false;
             CollectedStacks[i].EnableElastic(false);
             CollectedStacks[i].ThrowAway((CollectedStacks.Count - i) * Time.deltaTime);
         }
-        if (GameManager.instance.isBonusLevel)
-        {
-            GameObject[] tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TP");
-            for (int i = 0; i < tuvaletkagitlari.Length; i++)
-            {
-                tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;
-                tuvaletkagitlari[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            }
-        }
+        
         GameManager.instance.GameState = GameStates.GameFinished;
 
         Destroy(gameObject);
@@ -141,7 +149,7 @@ public class StackCollector : MonoBehaviour
                     {
                         if (CollectedStacks.Last().IsBigStack)
                         {
-                            CollectedStacks[i].MoveOneStackUp(.25f);
+                            CollectedStacks[i].MoveOneStackUp(.47f);
                         }
                         else
                         {

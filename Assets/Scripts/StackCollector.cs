@@ -54,11 +54,21 @@ public class StackCollector : MonoBehaviour
         //    item.EnableElastic(false);
         //    item.ThrowAway();
         //}
+        
         for (int i = CollectedStacks.Count - 1; i >= 0; i--)
         {
             CollectedStacks[i].Rigidbody.isKinematic = false;
             CollectedStacks[i].EnableElastic(false);
             CollectedStacks[i].ThrowAway((CollectedStacks.Count - i) * Time.deltaTime);
+        }
+        if (GameManager.instance.isBonusLevel)
+        {
+            GameObject[] tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TP");
+            for (int i = 0; i < tuvaletkagitlari.Length; i++)
+            {
+                tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;
+                tuvaletkagitlari[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            }
         }
         GameManager.instance.GameState = GameStates.GameFinished;
 

@@ -58157,6 +58157,7 @@ MonoBehaviour:
     type: 2}
   NextButton: {fileID: 2900914174933117236}
   RestartButton: {fileID: 1483188387203275078}
+  isBonusLevel: 0
   ScoreText: {fileID: 594419827202112052}
   CoinText: {fileID: 2084796152773008528}
   endPanel: {fileID: 8854508787752643839}

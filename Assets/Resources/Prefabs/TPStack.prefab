@@ -441,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 2147947876923642909, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}
       propertyPath: m_TagString
-      value: TuvaletKagidi
+      value: TP
       objectReference: {fileID: 0}
     - target: {fileID: 2185398744555406909, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}
@@ -531,7 +531,7 @@ PrefabInstance:
     - target: {fileID: 4443771005955104240, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}
       propertyPath: m_TagString
-      value: TuvaletKagidi
+      value: TP
       objectReference: {fileID: 0}
     - target: {fileID: 5081178160787141271, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}
@@ -561,7 +561,7 @@ PrefabInstance:
     - target: {fileID: 7075069992674909461, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}
       propertyPath: m_TagString
-      value: TuvaletKagidi
+      value: TP
       objectReference: {fileID: 0}
     - target: {fileID: 7446838958652664374, guid: db2e861a4a91ae247a160f07edc5baac,
         type: 3}

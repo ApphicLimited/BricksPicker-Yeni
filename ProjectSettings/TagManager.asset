@@ -9,6 +9,7 @@ TagManager:
   - MetreDetecter
   - FxTemporaire
   - StackCollecter
+  - TuvaletKagidi
   layers:
   - Default
   - TransparentFX

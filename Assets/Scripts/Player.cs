@@ -128,9 +128,22 @@ public class Player : MonoBehaviour
     {
         Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
         Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
+        StartCoroutine(StartUnFreeze());
         GameManager.instance.SmothFollow.GoForward();
         StackCollector.ResetJointSettings();
         GameManager.instance.SuperPowerController.KickPowerBar.gameObject.SetActive(false);
+    }
+
+
+    IEnumerator StartUnFreeze()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject[] tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TuvaletKagidi");
+        for (int i = 0; i < tuvaletkagitlari.Length; i++)
+        {
+            tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;
+            tuvaletkagitlari[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
     }
 
     #endregion

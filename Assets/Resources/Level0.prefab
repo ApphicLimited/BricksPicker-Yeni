@@ -9616,8 +9616,8 @@ MonoBehaviour:
   target: {fileID: 205860439165644306}
   distance: 3.5
   height: 0.1
-  heightDamping: 2
-  rotationDamping: 3
+  heightDamping: 0
+  rotationDamping: 0
 --- !u!82 &3338258687502622226
 AudioSource:
   m_ObjectHideFlags: 0

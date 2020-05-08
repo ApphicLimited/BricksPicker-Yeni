@@ -35,7 +35,20 @@ public class Stack : MonoBehaviour
     private void SetUpMaterial()
     {
         materialClone = new Material(GameManager.instance.StackManager.MaterialSource);
-        MeshRenderer.material = materialClone;
+        if (IsBigStack)
+        {
+            transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = materialClone;
+            transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = materialClone;
+            transform.GetChild(0).GetChild(2).GetComponent<MeshRenderer>().material = materialClone;
+            transform.GetChild(0).GetChild(3).GetComponent<MeshRenderer>().material = materialClone;
+        }
+        else
+        {
+            transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = materialClone;
+            transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = materialClone;
+            transform.GetChild(0).GetChild(2).GetComponent<MeshRenderer>().material = materialClone;
+        }
+
     }
 
     public void ChangeColour(BaseColour colour)

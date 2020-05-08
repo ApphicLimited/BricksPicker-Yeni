@@ -16,8 +16,7 @@ public class StackCollector : MonoBehaviour
     public List<Stack> CollectedStacks = new List<Stack>();
     private Material materialClone;
 
-    private float perStackHeightDistance = 0.49f;
-    private float perStackHeightDistanceFirst = 0.15f;
+    private float perStackHeightDistance = 0.38f;
     private bool IsPowerUpUsed;
 
     private void Start()
@@ -110,7 +109,7 @@ public class StackCollector : MonoBehaviour
 
                 if (CollectedStacks.Count == 1)
                 {
-                    CollectedStacks.Last().MoveOverCollecter(transform, 0.45f);
+                    CollectedStacks.Last().MoveOverCollecter(transform, 0.15f);
                     CollectedStacks.Last().EnableElastic(true, transform);
                     CollectedStacks.Last().Elastic.AnimationSpeed = GameManager.instance.StackManager.MaxStackWaveStrength;
                 }
@@ -118,11 +117,11 @@ public class StackCollector : MonoBehaviour
                 {
                     if (CollectedStacks.Last().IsBigStack)
                     {
-                        CollectedStacks.Last().MoveOverCollecter(transform, perStackHeightDistance);
+                        CollectedStacks.Last().MoveOverCollecter(transform, 0.2f);
                     }
                     else
                     {
-                        CollectedStacks.Last().MoveOverCollecter(transform, perStackHeightDistance);
+                        CollectedStacks.Last().MoveOverCollecter(transform, 0.15f);
                     }
                     
                     CollectedStacks.Last().EnableElastic(true, transform);
@@ -130,24 +129,16 @@ public class StackCollector : MonoBehaviour
 
                     for (int i = 0; i < CollectedStacks.Count; i++)
                     {
-                        if(i == 0)
+                        if (CollectedStacks.Last().IsBigStack)
                         {
-                            CollectedStacks[i].MoveOneStackUp(0);
+                            CollectedStacks[i].MoveOneStackUp(.25f);
                         }
                         else
                         {
-                            if (CollectedStacks.Last().IsBigStack)
-                            {
-                                CollectedStacks[i].MoveOneStackUp(perStackHeightDistance + 0.07f);
-                            }
-                            else
-                            {
-                                CollectedStacks[i].MoveOneStackUp(perStackHeightDistance);
-                            }
+                            CollectedStacks[i].MoveOneStackUp(.19f);
                         }
-                        
                         CollectedStacks[i].EnableElastic(true, transform);
-                        CollectedStacks[i].Elastic.AnimationSpeed += GameManager.instance.StackManager.PerStackWaveReductionAmount;
+                        CollectedStacks[i].Elastic.AnimationSpeed -= GameManager.instance.StackManager.PerStackWaveReductionAmount;
 
                         if (CollectedStacks[i].Elastic.AnimationSpeed < GameManager.instance.StackManager.MinStackWaveStrength)
                             CollectedStacks[i].Elastic.AnimationSpeed = GameManager.instance.StackManager.MinStackWaveStrength;
@@ -194,9 +185,6 @@ public class StackCollector : MonoBehaviour
         SuperPowerController.OnSuperPowerActivated -= OnSuperPowerActivated;
         GameManager.instance.OnGameStarted -= OnGameStarted;
     }
-
- 
-
 
     #endregion
 }

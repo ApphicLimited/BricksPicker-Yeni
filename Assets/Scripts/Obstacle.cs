@@ -21,12 +21,6 @@ public class Obstacle : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("StackCollecter"))
         {
-            GameObject[] tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TuvaletKagidi");
-            for (int i = 0; i < tuvaletkagitlari.Length; i++)
-            {
-                tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;
-                tuvaletkagitlari[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            }
             GameManager.instance.GameState = GameStates.GameOver;
             FindObjectOfType<StackCollector>().ResetJointSettings();
             FindObjectOfType<Player>().Animator.enabled = false;

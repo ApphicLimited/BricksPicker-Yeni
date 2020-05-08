@@ -21,10 +21,13 @@ public class PlayerManager : MonoBehaviour
         GameManager.instance.OnGameStarted += OnGameStarted;
     }
 
-    public void ChangePlayerColour(BaseColour colour,bool playParticle)
+    public void ChangePlayerColour(BaseColour colour, bool playParticle)
     {
         CurrentColour = colour;
-        Player.ChangeColour(colour, playParticle);
+        if (!GameManager.instance.isBonusLevel)
+        {
+            Player.ChangeColour(colour, playParticle); 
+        }
     }
 
     public void MoveToSide(TouchSides side)

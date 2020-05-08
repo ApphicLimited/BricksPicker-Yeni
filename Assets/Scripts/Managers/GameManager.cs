@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject NextButton, RestartButton;
 
     private bool isGameStarted;
+    public bool isBonusLevel;
     public bool IsGameStarted
     {
         get { return IsGameStarted; }

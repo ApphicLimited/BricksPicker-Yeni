@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public BaseColour CurrentBaseColour { get; set; }
     private float animatorSpeed;
+
+    GameObject[] tuvaletkagitlari;
     public float AnimatorSpeed
     {
         get { return animatorSpeed; }
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour
         StackCollector.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionZ;
         StackCollector.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 5f);
         PlayKickAnim();
+        tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TuvaletKagidi");
         //Jump up
         Rigidbody.velocity = new Vector3(0f, 5f, 1f);
         GameManager.instance.TimeController.DoSlowMotion();
@@ -137,8 +140,8 @@ public class Player : MonoBehaviour
 
     IEnumerator StartUnFreeze()
     {
-        yield return new WaitForSeconds(0.5f);
-        GameObject[] tuvaletkagitlari = GameObject.FindGameObjectsWithTag("TuvaletKagidi");
+        yield return new WaitForSeconds(1f);
+        
         for (int i = 0; i < tuvaletkagitlari.Length; i++)
         {
             tuvaletkagitlari[i].GetComponent<BoxCollider>().enabled = true;

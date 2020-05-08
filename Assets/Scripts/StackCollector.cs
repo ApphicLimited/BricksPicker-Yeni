@@ -147,7 +147,7 @@ public class StackCollector : MonoBehaviour
                         }
                         
                         CollectedStacks[i].EnableElastic(true, transform);
-                        CollectedStacks[i].Elastic.AnimationSpeed -= GameManager.instance.StackManager.PerStackWaveReductionAmount;
+                        CollectedStacks[i].Elastic.AnimationSpeed += GameManager.instance.StackManager.PerStackWaveReductionAmount;
 
                         if (CollectedStacks[i].Elastic.AnimationSpeed < GameManager.instance.StackManager.MinStackWaveStrength)
                             CollectedStacks[i].Elastic.AnimationSpeed = GameManager.instance.StackManager.MinStackWaveStrength;

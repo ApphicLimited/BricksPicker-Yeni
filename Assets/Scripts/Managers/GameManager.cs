@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         else if (this != instance)
             Destroy(this);
 
-        Application.targetFrameRate = 60;        
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
@@ -82,12 +82,19 @@ public class GameManager : MonoBehaviour
         GameStarter.instance.RestartLevel();
     }
 
-    public Text ScoreText, CoinText;
+    public Text ScoreText, CoinText, LevelCompleteText;
     public GameObject endPanel;
+    public GameObject a, aa ,aaa;
     public void GameOver()
     {
+        a.SetActive(false);
+        aa.SetActive(false);
+        aaa.SetActive(false);
+
         NextButton.SetActive(true);
         CoinText.text = CoinController.CollectedCoins.ToString();
+        LevelCompleteText.text = "LEVEL " + (GameStarter.instance.currentLevel + 1) + " COMPLETE";
+        
         endPanel.SetActive(true);
     }
 }

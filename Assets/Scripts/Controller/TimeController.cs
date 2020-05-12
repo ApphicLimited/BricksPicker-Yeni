@@ -16,15 +16,14 @@ public class TimeController : MonoBehaviour
         IsSlowMotionStart = false;
         timer = 0;
 
-        SlowDownFactor = 0.04f;
-        SlowDownTimeAmaount = 1f;
+        SlowDownFactor = 0.4f;
+        SlowDownTimeAmaount = 0.8f;
     }
 
         // Update is called once per frame
         void Update()
     {
-        Time.timeScale += (1f / SlowDownTimeAmaount) * Time.unscaledDeltaTime;
-        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+      
 
         if (IsSlowMotionStart)
         {
@@ -42,13 +41,13 @@ public class TimeController : MonoBehaviour
     {
         IsSlowMotionStart = true;
         Time.timeScale = SlowDownFactor;
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
     }
 
     public void StopSlowMotion()
     {
         IsSlowMotionStart = false;
         Time.timeScale = 1f;
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        Time.fixedDeltaTime = 0.02F;
     }
 }

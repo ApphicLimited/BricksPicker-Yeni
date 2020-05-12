@@ -107,10 +107,17 @@ public class Player : MonoBehaviour
         StackCollector.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionZ;
         StackCollector.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 5f);
         PlayKickAnim();
-        //Jump up
-        Rigidbody.velocity = new Vector3(0f, 5f, 1f);
         GameManager.instance.TimeController.DoSlowMotion();
+        //Jump up
+        Rigidbody.AddForce(new Vector3(0f, 5.5f, 7f), ForceMode.Impulse);
+        StartCoroutine(StopZ());
         GameManager.instance.GameState = GameStates.GamePaused;
+    }
+
+    IEnumerator StopZ()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -127,7 +134,9 @@ public class Player : MonoBehaviour
     public void AtEndOfKickingAnim()
     {
         Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
-        Instantiate(HitEffect, StackCollector.transform.position, Quaternion.identity);
+        Instantiate(HitEffect, new Vector3(StackCollector.transform.position.x - 0.1f, StackCollector.transform.position.y - 0.1f, StackCollector.transform.position.z - 0.1f), Quaternion.identity);
+        Instantiate(HitEffect, new Vector3(StackCollector.transform.position.x + 0.1f, StackCollector.transform.position.y+0.1f, StackCollector.transform.position.z +0.1f), Quaternion.identity);
+        Instantiate(HitEffect, new Vector3(StackCollector.transform.position.x + 0.1f, StackCollector.transform.position.y - 0.1f, StackCollector.transform.position.z + 0.1f), Quaternion.identity);
         GameManager.instance.SmothFollow.GoForward();
         StackCollector.ResetJointSettings();
         GameManager.instance.SuperPowerController.KickPowerBar.gameObject.SetActive(false);

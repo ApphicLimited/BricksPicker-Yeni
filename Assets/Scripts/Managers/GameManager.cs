@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public Text ScoreText, CoinText, LevelCompleteText;
     public GameObject endPanel;
+    public GameObject endPanelfireworks;
     public GameObject a, aa ,aaa;
     public void GameOver()
     {
@@ -96,5 +97,6 @@ public class GameManager : MonoBehaviour
         LevelCompleteText.text = "LEVEL " + (GameStarter.instance.currentLevel + 1) + " COMPLETE";
         
         endPanel.SetActive(true);
+        endPanelfireworks.SetActive(true);
     }
 }

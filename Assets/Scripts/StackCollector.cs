@@ -75,7 +75,7 @@ public class StackCollector : MonoBehaviour
         {
             CollectedStacks[i].Rigidbody.isKinematic = false;
             CollectedStacks[i].EnableElastic(false);
-            CollectedStacks[i].ThrowAway((CollectedStacks.Count - i) * Time.deltaTime);
+            CollectedStacks[i].ThrowAway((CollectedStacks.Count - i) * Time.deltaTime * 1.25f);
         }
         
         GameManager.instance.GameState = GameStates.GameFinished;
@@ -133,7 +133,11 @@ public class StackCollector : MonoBehaviour
                 }
                 else
                 {
-                    if (CollectedStacks.Last().IsBigStack)
+                    if (CollectedStacks.Last().IsBigStack && CollectedStacks.Last().name.Contains("Stack2"))
+                    {
+                        CollectedStacks.Last().MoveOverCollecter(transform, 0f);
+                    }
+                    else if (CollectedStacks.Last().IsBigStack && CollectedStacks.Last().name.Contains("TPStack"))
                     {
                         CollectedStacks.Last().MoveOverCollecter(transform, 0.2f);
                     }

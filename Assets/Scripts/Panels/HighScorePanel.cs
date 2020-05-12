@@ -12,7 +12,7 @@ public class HighScorePanel : MonoBehaviour
 
     public void AppearUp()
     {
-        TextScore.text = GameManager.instance.ScoreController.CurrentCollectedStackNumber.ToString();
+        TextScore.text = "YOU SCORED "+ GameManager.instance.ScoreController.CurrentCollectedStackNumber.ToString();
         TextCoin.text = GameManager.instance.ScoreController.CurrentCollectedStackNumber.ToString();
         AnimationUIMove.StartAnimation();
         StartCoroutine(DissAppear(5f));
